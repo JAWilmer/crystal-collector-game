@@ -5,113 +5,98 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="resetsheet" type="text/css" href="../crystal-collector-game/assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../crystal-collector-game/assets/css/style.css">
+    <link rel="resetsheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Crystal Collector Game</title>
 </head>
 
 <body>
     <div class="container">
-        <script src="../crystal-collector-game/assets/script/script.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+        <script src="assets/script/script.js"></script>
 
         <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-                featured content or information.</p>
+            <h1 class="display-4">The Crystal Mission!</h1>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </div>
-
-        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">How
-            to Play</button>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
-                <div class="d-flex p-2 bd-highlight" id="targetNo">My target number:</div>
-                <div class="d-flex p-2 bd-highlight" id="mySum">My current sum:</div>
-
-            </div>
+            <p class="lead">You have been randomly assigned a number to match. Each crystal has also been randomly assigned
+                a number. By clicking on the crystal you add its value to your current sum. Your mission is to match your
+                sum with the target number. Be warned, only an exact match earns you a win. Do you choose to accept this
+                mission?
+            </p>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">crystal images here, mabye as buttons with imbedded images</h6>
-                <button id ="purpleCrystal"></button>
-                <button id ="orangeCrystal"></button>
-                <button id ="pinkCrystal"></button>
-                <button id ="blueCrystal"></button>
-
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
+                <div class="d-flex p-2 bd-highlight">
+                    <span id="targetNo"></span>
+                </div>
+                <div class="d-flex p-2 bd-highlight">
+                    <span id="mySum"></span>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">win count/ loss count hree
-                </p>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                        <img src="assets/images/square-purple.svg  #svgView(viewBox(0,0,200,200)) " class=crystalImage id="purpleCrystal" alt="Purple Crystal">
+                        <img src="assets/images/square-orange.svg  #svgView(viewBox(0,0,200,200))" class=crystalImage id="orangeCrystal" alt="Orange Crystal">
+                        <img src="assets/images/square-pink.svg  #svgView(viewBox(0,0,200,200)) " class=crystalImage id="pinkCrystal" alt="Pink Crystal">
+                        <img src="assets/images/square-blue.svg  #svgView(viewBox(0,0,200,200)) " class=crystalImage id="blueCrystal" alt="Blue Crystal">
+                    </div>
+                </div>
             </div>
-        </div>
 
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex p-2 bd-highlight">
+                        <span id="winCount"></span>
+                    </div>
+                    <div class="d-flex p-2 bd-highlight">
+                        <span id="lossCount"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- WIN/ LOSS MODAL (MAYBE)
         <div class="modal" tabindex="-1" role="dialog" id="winModal">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Modal title</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                      <p>Modal body text goes here.</p>
+                        <p>Modal body text goes here.</p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
+        </div>
 
-              <div class="modal" tabindex="-1" role="dialog" id="lossModal">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal" tabindex="-1" role="dialog" id="lossModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <p>Modal body text goes here.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
+                        </button>
                     </div>
-                  </div>
-
-
-
-
-
-
-
-
-
-    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 </body>
 
 </html>
