@@ -1,107 +1,141 @@
-// Initialize popover for instructions
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-
 // VARIABLES
-let targetNo; //number genarated for player to reach
-let showTargetNo; // display target number on document
+let targetNo //number genarated for player to reach
+let purpleNo // number generated for purple crystal
+let orangeNo // number generated for orange crystal
+let pinkNo // number generated for pink crystal
+let blueNo // number generated for blue crystal
 
-let purpleNo; // number generated for purple crystal
-let orangeNo; // number generated for orange crystal
-let pinkNo; // number generated for pink crystal
-let blueNo; // number generated for blue crystal
-
-let purpleCrystal; //purple crystal
-let orangeCrystal; //orange crystal
-let pinkCrystal; //pink crystal
-let blueCrystal; //blue crystal
-
-let mySum; //tally of player's current sum 
-
-let wins= 0; //Player wins
-let losses= 0; //Player losses
-
-let winModal // modal pop-up to celebrate win
-let lossModal // modal pop-up to inform loss
-
-// FUNCTIONS
-generateNumbers // generates random number to match and random numbers for each crystal
-addPurpleNo // adds random number associate with purple crystal to players sum
-addOrangeNo // adds random number associate with orange crystal to players sum
-addPinkNo // adds random number associate with pink crystal to players sum
-addBlueNo // adds random number associate with blue crystal to players sum
-showMySum // dispalys updated sum
-winNotification // Shows modal and triggers reset 
+let purpleCrystal //purple crystal 
+let orangeCrystal //orange crystal 
+let pinkCrystal //pink crystal 
+let blueCrystal //blue crystal 
 
 
-// Initialize game set an onclick
+let mySum= 0; //tally of player's current sum 
+let wins= 0; //Player wins 
+let losses= 0; //Player losses 
 
-// Generate and assign numbers - target number and crystals
-function generateNumbers () {
-    targetNo = Math.floor(Math.random() * 99);
-    showTargetNo = document.getElementById("targetNo").innerHTML ="";
-    // possibly something like this for jQ    $('#scoreToMatch').text(Random);
+$(document).ready(function() {
 
-    purpleNo = Math.floor(Math.random() * 16);
-    //code here to push blue number to crystal to be accessed at click
+  // Generate a random number between 19 - 120 
+  let targetNo=Math.floor(Math.random()*101+19)
+    // Apends number to targetNo id
+    $('#targetNo').text("Number to match:   " +
+      targetNo);
+    //Generate a random number between 1 - 12 for each gem
+    let purpleNo= Math.floor(Math.random()*11+1)
+    let orangeNo= Math.floor(Math.random()*11+1)
+    let pinkNo= Math.floor(Math.random()*11+1)
+    let blueNo= Math.floor(Math.random()*11+1)  
+      $('#winCount').text("Wins:   " + wins);
+      $('#lossCount').text("Losses:" + losses); 
 
-    orangeNo = Math.floor(Math.random() * 16);
-//code here to push blue number to crystal to be accessed at click
+  //Resets the game
+  function reset(){
+    targetNo=Math.floor(Math.random()*101+19);
+    console.log(targetNo)
+    $('#targetNo').text("Number to match:   " +
+    targetNo);
+    purpleNo= Math.floor(Math.random()*11+1);
+    orangeNo= Math.floor(Math.random()*11+1);
+    pinkNo= Math.floor(Math.random()*11+1);
+    blueNo= Math.floor(Math.random()*11+1);
+    mySum= 0;
+    $('#mySum').text("My current sum:  "  + mySum);
+    }
 
-    pinkNo = Math.floor(Math.random() * 16);
-//code here to push blue number to crystal to be accessed at click
+  //Congratulates winner and adds wins to the mySum
+  function congratulations(){  
+  alert("Congratulatons, you won!");
+    wins++; 
+    $('#winCount').text("Wins:   " + wins);
+    reset();
+  }
+  //Consoles loser and addes losses to mySum
+  function tryAgain(){ 
+  alert ("You almost did it, try again?");
+    losses++;
+    $('#lossCount').text("Losses:  " + losses);
+    reset()
+  }
+  //Sets up click for jewels
+    $('#purpleCrystal').on ('click', function(){  
+      mySum = mySum + purpleNo;
+      console.log("My new sum = " + mySum);
+      $('#mySum').text("My current sum:  "  + mySum); 
+            //sets win/lose conditions
+          if (mySum == targetNo){
+            congratulations();
+          }
+          else if ( mySum > targetNo){
+            tryAgain();
+          }   
+    })  
+    $('#orangeCrystal').on ('click', function(){ 
+      mySum = mySum + orangeNo;
+      console.log("My new sum = " + mySum);
+      $('#mySum').text("My current sum:  " + mySum); 
+          if (mySum == targetNo){
+            congratulations();
+          }
+          else if ( mySum > targetNo){
+            tryAgain();
+          } 
+    })  
+    $('#pinkCrystal').on ('click', function(){ 
+      mySum = mySum + pinkNo;
+      console.log("My new sum = " + mySum);
+      $('#mySum').text("My current sum:  " + mySum);
+          //Sets win/lose conditions
+          if (mySum == targetNo){
+            congratulations();
+          }
+          else if ( mySum > targetNo){
+            tryAgain();
+          } 
+    })  
+    $('#blueCrystal').on ('click', function(){ 
+      mySum = mySum + blueNo;
+      console.log("My new sum = " + mySum);
+      $('#mySum').text("My current sum:  " + mySum); 
+          //Sets win/lose conditions
+          if (mySum == targetNo){
+            congratulations();
+          }
+          else if ( mySum > targetNo){
+            tryAgain();
+          }
+    });   
+  }); 
 
-    blueNo = Math.floor(Math.random() * 16);
-//code here to push blue number to crystal to be accessed at click
 
-}
 
+
+
+
+
+
+
+
+
+
+
+//  WIN/ LOSS MODALS
+// let winModal // modal pop-up to celebrate win
+// let lossModal // modal pop-up to inform loss
 
 // Display wins
-$('#winModal').on('shown.bs.modal', function winNotification() {        
-    $('#myInput').trigger('focus')
-      })
-      //wins++; // does this add to the win count?
-      //$('#wins').text(wins);
+// $('#winModal').on('shown.bs.modal', function winNotification() {        
+//     $('#myInput').trigger('focus')
+//       })
+//       //wins++; // does this add to the win count?
+//       //$('#wins').text(wins);
       
 
-// Display losses
-$('#lossModal').on('shown.bs.modal', function lossNotification () {
-    $('#myInput').trigger('focus')
-      })
-    //   losses++;
-    //   $('#losses').text(losses);
+// // Display losses
+// $('#lossModal').on('shown.bs.modal', function lossNotification () {
+//     $('#myInput').trigger('focus')
+//       })
+//     //   losses++;
+//     //   $('#losses').text(losses);
 
-//Clicking crystals and adding player's score
-
-document.getElementById("purpleCrystal").addEventListener("click", addPurpleNo);
-
-function addPurpleNo () {
-    mySum = mySum + purpleNo;
-    console.log ("Player's current sum" + mySum);
-    showMySum = document.getElementById("mySum").innerHTML = "";
-    //is this how it looks in jQ? $('#mysum').text(mySum);
-        // Win/ loss conditions
-        if (mySum === targetNo){
-            winNotification ();
-        }
-        else if (mySum > targetNo){
-            lossNotification ();
-        }
-}
-
-
-// Win and loss modals
-
-// function updateWinLoss () {
-//     updateWins = document.getElementById("targetNo");
-// $('#wins').text(wins);
-// $('#losses').text(losses);
-
-// There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
-
-// You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.
-// if statements here
-
-// Reset game
