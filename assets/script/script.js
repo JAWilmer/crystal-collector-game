@@ -53,7 +53,7 @@ $(document).ready(function() {
   }
   //Consoles loser and addes losses to mySum
   function tryAgain(){ 
-  alert ("You almost did it, try again?");
+  alert ("You almost did it! Try again?");
     losses++;
     $('#lossCount').text("Losses:  " + losses);
     reset()
@@ -118,24 +118,4 @@ $(document).ready(function() {
 
 
 
-
-
-//  WIN/ LOSS MODALS
-// let winModal // modal pop-up to celebrate win
-// let lossModal // modal pop-up to inform loss
-
-// Display wins
-// $('#winModal').on('shown.bs.modal', function winNotification() {        
-//     $('#myInput').trigger('focus')
-//       })
-//       //wins++; // does this add to the win count?
-//       //$('#wins').text(wins);
-      
-
-// // Display losses
-// $('#lossModal').on('shown.bs.modal', function lossNotification () {
-//     $('#myInput').trigger('focus')
-//       })
-//     //   losses++;
-//     //   $('#losses').text(losses);
 
