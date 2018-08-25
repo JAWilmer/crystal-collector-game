@@ -1,0 +1,32 @@
+span {
+   font-size: 150%; 
+}
+
+.card-body {
+    display: inline-block; 
+    flex-direction: column; 
+    justify-content: center;
+    vertical-align: top;
+    clear: both;
+    margin: 0 auto;
+} 
+
+d-inline-flex { 
+    display: inline-block; 
+    flex-direction: column; 
+    justify-content: center;
+    vertical-align: top;
+    clear: both;
+    margin: 0 auto;
+    background-color: blue;
+
+
+}
+
+img {
+    display: inline-block;
+    width: 20%;
+    height: auto; 
+    margin: 0 auto;
+    vertical-align: top;
+  }   
