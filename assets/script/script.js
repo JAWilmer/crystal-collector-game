@@ -28,7 +28,7 @@ $(document).ready(function() {
     let pinkNo= Math.floor(Math.random()*11+1)
     let blueNo= Math.floor(Math.random()*11+1)  
       $('#winCount').text("Wins:   " + wins);
-      $('#lossCount').text("Losses:" + losses); 
+      $('#lossCount').text("Losses:   " + losses); 
 
   //Resets the game
   function reset(){
@@ -62,7 +62,7 @@ $(document).ready(function() {
     $('#purpleCrystal').on ('click', function(){  
       mySum = mySum + purpleNo;
       console.log("My new sum = " + mySum);
-      $('#mySum').text("My current sum:  "  + mySum); 
+      $('#mySum').text("My current sum:   "  + mySum); 
             //sets win/lose conditions
           if (mySum == targetNo){
             congratulations();
@@ -96,7 +96,7 @@ $(document).ready(function() {
     })  
     $('#blueCrystal').on ('click', function(){ 
       mySum = mySum + blueNo;
-      console.log("My new sum = " + mySum);
+      console.log("My new sum =  " + mySum);
       $('#mySum').text("My current sum:  " + mySum); 
           //Sets win/lose conditions
           if (mySum == targetNo){
